@@ -1,0 +1,2 @@
+
+<?php echo e(Html::image('img/selloGerente.PNG', 'sello', array('height' => '110', 'width' => '300'))); ?><?php /**PATH C:\xampp\htdocs\sgd\resources\views\proyectos\herramientas\sello_gerente.blade.php ENDPATH**/ ?>
