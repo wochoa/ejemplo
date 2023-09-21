@@ -10,31 +10,31 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-      <link rel="stylesheet" href="{{asset('css/app.css')}}">
-      <link rel="stylesheet" href="{{asset('css/estilos.css')}}">
-      <link rel="stylesheet" href="{{asset('css/styles.css')}}">
+      <link rel="stylesheet" href="<?php echo e(asset('css/app.css')); ?>">
+      <link rel="stylesheet" href="<?php echo e(asset('css/estilos.css')); ?>">
+      <link rel="stylesheet" href="<?php echo e(asset('css/styles.css')); ?>">
   </head>
 
   <body style="background: rgb(194,185,185);
                background: linear-gradient(29deg, rgba(194,185,185,1) 27%, rgba(255,255,255,1) 100%);" >
 
-        @if (Auth::guest())
+        <?php if(Auth::guest()): ?>
         <div class="Navbar">
           <div class="Navbar-wrapper">
             <form action="">
-              <a href="{{route('tramite.buscar.buscarDigital')}}" target="_blank" class="btn btn-sm btn-warning">Buscar Documentos Firmados</a>
-              <a href="{{route('tramite.buscar.buscarDocExterno')}}" target="_blank" class="btn btn-sm btn-success">Buscar Documentos Externos</a>
+              <a href="<?php echo e(route('tramite.buscar.buscarDigital')); ?>" target="_blank" class="btn btn-sm btn-warning">Buscar Documentos Firmados</a>
+              <a href="<?php echo e(route('tramite.buscar.buscarDocExterno')); ?>" target="_blank" class="btn btn-sm btn-success">Buscar Documentos Externos</a>
             </form>
             <div id="expediente">
               <buscar-expediente-gen
-                route-expediente="{{route('tramite.expediente.index')}}"
-                route-documento="{{route('tramite.buscar.buscarExpedienteModal','%s')}}"
+                route-expediente="<?php echo e(route('tramite.expediente.index')); ?>"
+                route-documento="<?php echo e(route('tramite.buscar.buscarExpedienteModal','%s')); ?>"
               >
               </buscar-expediente-gen>
             </div>
           </div>
         </div>
-        @else
+        <?php else: ?>
         <nav class="navbar navbar-gorehco">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
               <span class="sr-only">Toggle navigation</span>
@@ -46,32 +46,33 @@
             <ul class="nav navbar-nav navbar-right">
               <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                      {{ Auth::user()->adm_name }} <span class="caret"></span>
+                      <?php echo e(Auth::user()->adm_name); ?> <span class="caret"></span>
                   </a>
 
                   <ul class="dropdown-menu" role="menu">
-                      <li><a href="{{ url('/logout') }}"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
+                      <li><a href="<?php echo e(url('/logout')); ?>"><i class="fa fa-btn fa-sign-out"></i>Logout</a></li>
                   </ul>
               </li>
             </ul>
 
           </div><!--/.nav-collapse -->
         </nav>
-        @endif
+        <?php endif; ?>
 
 
     <div class="container-fluid content">
-        @yield('content')
+        <?php echo $__env->yieldContent('content'); ?>
     </div><!-- /.container -->
 
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="{{asset('js/jquery-3.2.1.min.js')}}"></script>
-    <script src="{{asset('js/bootstrap.min.js')}}"></script>
-    <script src="{{ mix('js/manifest.js') }}"></script>
-    <script src="{{ mix('js/vendor.js') }}"></script>
-    <script src="{{asset('js/expediente.js')}}"></script>
+    <script src="<?php echo e(asset('js/jquery-3.2.1.min.js')); ?>"></script>
+    <script src="<?php echo e(asset('js/bootstrap.min.js')); ?>"></script>
+    <script src="<?php echo e(mix('js/manifest.js')); ?>"></script>
+    <script src="<?php echo e(mix('js/vendor.js')); ?>"></script>
+    <script src="<?php echo e(asset('js/expediente.js')); ?>"></script>
   </body>
 </html>
+<?php /**PATH C:\xampp\htdocs\sgd\resources\views/layouts/tema.blade.php ENDPATH**/ ?>

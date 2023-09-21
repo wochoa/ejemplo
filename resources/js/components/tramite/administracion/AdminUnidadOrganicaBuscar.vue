@@ -74,7 +74,7 @@
                     <td style="font-size:13px; font-family: Tahoma">{{ dependencia.iddependencia }}</td>
                     <td style="font-size:13px; font-family: Tahoma">{{ dependencia.depe_nombre }}</td>
                     <td style="font-size:13px; font-family: Tahoma">{{ dependencia.depe_abreviado }}</td>
-                    <td style="font-size:13px; font-family: Tahoma">{{ dependencia.depe_siglaxp }}</td>
+                    <td style="font-size:13px; font-family: Tahoma">{{ dependencia.depe_sigla }}</td>
                     <td style="font-size:13px; font-family: Tahoma">{{ dependencia.depe_representante }}</td>
                     <td style="font-size:13px; font-family: Tahoma">{{ dependencia.nombre }}</td>
                     <td>

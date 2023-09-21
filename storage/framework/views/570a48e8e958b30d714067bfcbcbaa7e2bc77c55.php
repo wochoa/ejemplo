@@ -1,12 +1,10 @@
-@extends('layouts.tema')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 
 <div class="Login">
     <div class="pt-2 pb-4" align="center">
-        <!-- <img src="{{asset("img/logooficial.png")}}" width="250" class="img-fluid"> -->
-        {{-- <br><br> --}}
-        {{-- <center><h1><strong>SISTEMA DE GESTIÓN DIGITAL</strong></h1></center> --}}
+        <!-- <img src="<?php echo e(asset("img/logooficial.png")); ?>" width="250" class="img-fluid"> -->
+        
+        
     </div>
 
     <!-- <img src="/img/imglogin.jpg" alt="" width="264px"> -->
@@ -20,10 +18,11 @@
             <div class="col-sm-6">
             <small>Realize los trámites digitales</small>
             <hr>
-            <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
-                {{ csrf_field() }}
+            <form class="form-horizontal" role="form" method="POST" action="<?php echo e(url('/login')); ?>">
+                <?php echo e(csrf_field()); ?>
 
-                <div class="form-group{{ $errors->has('adm_email') ? ' has-error' : '' }}">
+
+                <div class="form-group<?php echo e($errors->has('adm_email') ? ' has-error' : ''); ?>">
                     <div class="LoginGroup">
                         <span class="glyphicon glyphicon-user"></span>
                         <input 
@@ -31,30 +30,30 @@
                             type="text" 
                             class="form-control" 
                             name="adm_email"
-                            value="{{ old('adm_email') }}" 
+                            value="<?php echo e(old('adm_email')); ?>" 
                             onkeyup="javascript:this.value=this.value.toUpperCase();"
                             placeholder="Usuario"
                         />
                     </div>
 
-                    @if ($errors->has('adm_email'))
+                    <?php if($errors->has('adm_email')): ?>
                         <span class="help-block">
-                            <strong>{{ $errors->first('adm_email') }}</strong>
+                            <strong><?php echo e($errors->first('adm_email')); ?></strong>
                         </span>
-                    @endif
+                    <?php endif; ?>
                 
                 </div>
-                <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                <div class="form-group<?php echo e($errors->has('password') ? ' has-error' : ''); ?>">
                     <div class="LoginGroup">
                         <span class="glyphicon glyphicon-lock"></span>
                         <input id="password" type="password" class="form-control" name="password" 
                         placeholder="Contraseña">
                     </div>
-                    @if ($errors->has('password'))
+                    <?php if($errors->has('password')): ?>
                         <span class="help-block">
-                            <strong>{{ $errors->first('password') }}</strong>
+                            <strong><?php echo e($errors->first('password')); ?></strong>
                         </span>
-                    @endif
+                    <?php endif; ?>
                 
                 </div>
                 <div class="LoginActions">
@@ -88,4 +87,6 @@
 
    
 </div>
-@endsection
+<?php $__env->stopSection(); ?>
+
+<?php echo $__env->make('layouts.tema', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\sgd\resources\views/auth/login.blade.php ENDPATH**/ ?>

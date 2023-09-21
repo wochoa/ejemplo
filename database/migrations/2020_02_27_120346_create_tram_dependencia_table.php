@@ -15,7 +15,7 @@ class CreateTramDependenciaTable extends Migration
     {
         Schema::create('tram_dependencia', function (Blueprint $table) {
             $table->increments('iddependencia');
-            $table->string('depe_nombre', 80)->nullable();
+            $table->text('depe_nombre')->nullable();
             $table->string('depe_abreviado', 30)->nullable();
             $table->string('depe_sigla', 40)->nullable();
             $table->string('depe_representante', 60)->nullable();
