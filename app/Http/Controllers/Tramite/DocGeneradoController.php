@@ -96,7 +96,7 @@ class DocGeneradoController extends Controller
         $oficina     = Dependencia::find($documento->docu_iddependencia);
         $dependencia = Dependencia::find($oficina->depe_depende);
         $superior    = $oficina->getSuperiorName();
-        $ofi1        = ($superior != null) ? $superior : $oficina->depe_superior["nombre"];
+        @$ofi1        = ($superior != null) ? $superior : $oficina->depe_superior["nombre"];
         $ofi2        = ($superior != null) ? $oficina->depe_superior["nombre"] : '';
         //dd(dirname(__FILE__));
         //define('FPDF_FONTPATH', '/resources/fontTcpdf');
@@ -450,15 +450,15 @@ class DocGeneradoController extends Controller
         $pdf::MultiCell(0, 6, $oficina, 0, 'L');
         $pdf::Ln(1);
         /////////////////////////////
-        $pdf::SetFont('Helvetica', 'B', $fontSize);
-        $pdf::Ln(2);
-        $pdf::Cell(40, 6, 'DE:');
-        $pdf::Cell(0, 6, $documento->docu_firma);
-        $pdf::Ln(5);
-        $pdf::SetFont('Helvetica', '', $fontSize);
-        $pdf::Cell(40);
-        $pdf::MultiCell(0, 4, $documento->docu_cargo, 0, 'L');
-        $pdf::Ln(2);
+        // $pdf::SetFont('Helvetica', 'B', $fontSize);
+        // $pdf::Ln(2);
+        // $pdf::Cell(40, 6, 'DE:');
+        // $pdf::Cell(0, 6, $documento->docu_firma);
+        // $pdf::Ln(5);
+        // $pdf::SetFont('Helvetica', '', $fontSize);
+        // $pdf::Cell(40);
+        // $pdf::MultiCell(0, 4, $documento->docu_cargo, 0, 'L');
+        // $pdf::Ln(2);
         ///////////////////////////////
         
         $pdf::SetFont('Helvetica', 'B', $fontSize);

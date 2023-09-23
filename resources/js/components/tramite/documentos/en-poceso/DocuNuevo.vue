@@ -151,15 +151,15 @@
         type   : String,
         default: ''
       },
-      rutaurl  : {
-        type   : String,
-        default: ''
-      },
       routeWebserviceDni: {
         type   : String,
         default: ''
       },
       routeWebserviceRuc: {
+        type   : String,
+        default: ''
+      },
+      rutaurl  : {
         type   : String,
         default: ''
       },

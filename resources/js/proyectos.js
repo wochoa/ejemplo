@@ -14,6 +14,8 @@ import es                       from 'vee-validate/dist/locale/es'
 window.curryear = new Date().getFullYear()
 
 
+
+
 Validator.localize({es: es})
 Vue.use(VeeValidate, {locale: 'es'})
 Vue.use(CKEditor)
