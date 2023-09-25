@@ -104,13 +104,13 @@ class DocGeneradoController extends Controller
         $cm  = 10;
         $top = 3;
         //IDs de tipos de documento que tomaran el formato de documento
-        $oficio = [1, 5];
+        $oficio = [5, 7];// oficio y carta
         //IDs de tipos de documento que tomaran el formato de documento multiple INCLUYE MEMORANDUM
-        $multile = [2, 4, 19];
+        $multile = [4, 6, 32];
         //IDs de tipos de documento que tomaran el formato de RESOLUCION
-        $resolucion = [9];
+        $resolucion = [17];
         //IDs de tipos de documento que tomaran el formato de ACUERDO
-        $acuerdo = [16];
+        $acuerdo = [71];
         $pdf::SetMargins((3 * $cm), ($top * $cm), (2.5 * $cm));
         $pdf::SetAutoPageBreak(true, (3.5 * $cm));
         $margins = $pdf::getMargins();
