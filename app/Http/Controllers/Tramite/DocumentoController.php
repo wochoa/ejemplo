@@ -1320,7 +1320,7 @@ class DocumentoController extends Controller
                         $this->fileSave($request->docu_archivo, $documento->getIdString(), $path);
                     }
                     
-                    \MultiMail::to($documento->docu_emailorigen)->from(array_rand (config('multimail.emails')))->queue(new SolicitudTramite($documento));
+                    // \MultiMail::to($documento->docu_emailorigen)->from(array_rand (config('multimail.emails')))->queue(new SolicitudTramite($documento));
                     return response()->json(['status' => true, 'documento'=> $documento], 200);
                 } else {
                     $documento                       = DocumentoExterno::find($request->id);
