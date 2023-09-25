@@ -218,12 +218,12 @@ class DocGeneradoController extends Controller
                     $pdf->Cell(
                         $pdf->getPageWidth() - $margins['right'] - $margins['left'],
                         3,
-                        $url_gral.'/tramite/buscar/buscarDigital',
+                        $url_gral.'tramite/buscar/buscarDigital',
                         0,
                         0,
                         'L',
                         0,
-                        $url_gral.'/tramite/buscar/buscarDigital'
+                        $url_gral.'tramite/buscar/buscarDigital'
                     );
                     $pdf->Ln();
                 }
