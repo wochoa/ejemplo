@@ -96,7 +96,7 @@
           </a>
         </div>
         <div v-if="routes['tramite.inicio'].can" class="col-6 col-md-3 text-center">
-          <a :href="routes['tramite.inicio'].route" class="Red">
+          <a :href="routes['tramite.inicio'].route" class="Blue">
             <span class="icon icon-copy fs-72" aria-hidden="true"></span>
             <div class="h4">Trámite Documentario</div>
           </a>

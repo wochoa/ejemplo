@@ -9,6 +9,7 @@ use App\Models\MesaElectronica\DocumentoExterno;
 use Illuminate\Support\Str;
 use App\Http\Controllers\Controller;
 
+use App\Models\Tramite\PersonaCorreo;
 
 use App\Operacion;
 use App\TipoDocumentoCorrel;
@@ -1291,11 +1292,26 @@ class DocumentoController extends Controller
                         'docu_firma'            => 'required'
                     ];
                     $this->validate($request, $rules);
-
+                    // buscamos datos para conseguir el codigo de tramite sacado de tram_persona_correo
+                    $dni=$request->docu_dni;
+                    $ruc=$request->docu_ruc;
+                    $correo=$request->docu_emailorigen;
+                    if($dni<>'')
+                    {
+                        $codigo=PersonaCorreo::where(['persona_dni'=>$dni,'correo'=>$correo])->value('codigo');
+                    }
+                    else{
+                        $codigo=PersonaCorreo::where(['persona_ruc'=>$ruc,'correo'=>$correo])->value('codigo');
+                    }
+                   
+                    
+                    //--------------------------------------------------------------------------------------------
                     $documento = new DocumentoExterno();
                     $documento->fill($request->only($documento->getFillable()));
                     $documento->docu_estado = 0;
                     $documento->docu_token  = Str::random(50);
+                    $documento->codigo  = $codigo;
+
                     $documento->save();
                     if (count($request->docu_archivo) > 0) {
                         $anio = substr($documento->docu_fecha_doc, 0, 4);
@@ -1303,7 +1319,8 @@ class DocumentoController extends Controller
                         $path .= ($documento->docu_tipo) ? '\\' . $documento->docu_idusuario : '';
                         $this->fileSave($request->docu_archivo, $documento->getIdString(), $path);
                     }
-                    //\MultiMail::to($documento->docu_emailorigen)->from(array_rand (config('multimail.emails')))->queue(new SolicitudTramite($documento));
+                    
+                    \MultiMail::to($documento->docu_emailorigen)->from(array_rand (config('multimail.emails')))->queue(new SolicitudTramite($documento));
                     return response()->json(['status' => true, 'documento'=> $documento], 200);
                 } else {
                     $documento                       = DocumentoExterno::find($request->id);

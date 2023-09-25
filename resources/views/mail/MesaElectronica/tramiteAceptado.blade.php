@@ -6,7 +6,7 @@
   <title>Solicitud de tramite</title>
 </head>
 <body>
-<h1 style="text-align: center; background-color: #4F81BD">Notificación de Aceptación de Trámite Documentario</h1>
+<h1 style="text-align: center; background-color: #9E0B26">Notificación de Aceptación de Trámite Documentario</h1>
 <p>Estimado(a) Sr(a): <strong>{{$doc->docu_firma}}</strong>
   Se le comunica a usted que el registro de su trámite ha sido validado.</p>
 <ul>
@@ -19,6 +19,7 @@
   @endif
   <li>Teléfono: {{$doc->docu_telef}}</li>
   <li>eMail: {{$doc->docu_emailorigen}}</li>
+  <li><b>Código: {{$doc->codigo}}</b></li>
 </ul>
 <p>Recuerde que puede hacer el seguimiento de su trámite <a href="{{route('tramite.buscar.buscarExpedienteModal', $doc->docu_idexma) }}">
 aquí
@@ -26,7 +27,7 @@ aquí
 
 <p>{{$dependencia->depe_nombre}}</p>
 
-    <img src="{{asset('https://www.regionCUSCO.gob.pe/img/logosgrh/Logo-Oficial-2-300x98.png')}}" alt="Gobierno Regional Huánuco" />
+    <img src="{{asset('/img/membrete_header20.jpg')}}" alt="Gobierno Regional Cusco" />
     <p>Por favor no responder a esta dirección de correo, ya que este buzón es de envío automático.</p>
 </body>
 </html>

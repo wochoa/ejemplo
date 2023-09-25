@@ -12,6 +12,7 @@ use App\Operacion;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Mail;
+use Illuminate\Support\Facades\DB;
 
 class DocumentoExternoController extends Controller
 {
@@ -263,11 +264,11 @@ class DocumentoExternoController extends Controller
         }
     }
     
-    public function documentos_observados($depe)
+    public function documentos_observados()
     {
         //$externo=DocumentoExterno::where(['docu_estado'=>1,'id_dependencia'=>$depe])->orderBy('id','desc')->paginate(10);;
 
-        return view('observacioneswil',['depe'=>$depe]);
+        return view('observacioneswil');
         //return $externo;
     }
     public function bus_documentos_observados(Request $request)
@@ -275,15 +276,16 @@ class DocumentoExternoController extends Controller
         //$depe=$request()->depe;
         $email=$request->input('correo');//$request()->correo;
         $dni=$request->input('dni');//$request()->dni;
-        $telefono=$request->input('numtel');
+        $codigo=$request->input('codigo');
 
         
 
         if(strlen($dni)==8){
-            $externo=DocumentoExterno::where(['docu_emailorigen'=>$email,'docu_dni'=>$dni,'docu_telef'=>$telefono])->orderBy('id','desc')->paginate(40);//'docu_estado'=>1,
+            $externo=DB::table('tram_documento_externo as tex')->join('tram_tipodocumento as tp','tex.docu_idtipodocumento','=','tp.idtdoc') ->join('tram_dependencia','tex.id_dependencia','=','tram_dependencia.iddependencia')->where(['tex.docu_emailorigen'=>$email,'tex.docu_dni'=>$dni,'tex.codigo'=>$codigo])->orderBy('tex.id','desc')->get();//'docu_estado'=>1,
         }
         else{
-            $externo=DocumentoExterno::where(['docu_emailorigen'=>$email,'docu_ruc'=>$dni,'docu_telef'=>$telefono])->orderBy('id','desc')->paginate(40);//'docu_estado'=>1,
+
+            $externo=DB::table('tram_documento_externo as tex')->join('tram_tipodocumento as tp','tex.docu_idtipodocumento','=','tp.idtdoc') ->join('tram_dependencia','tex.id_dependencia','=','tram_dependencia.iddependencia')->where(['tex.docu_emailorigen'=>$email,'tex.docu_ruc'=>$dni,'tex.codigo'=>$codigo])->orderBy('tex.id','desc')->get();//'docu_estado'=>1,
         }
 
         

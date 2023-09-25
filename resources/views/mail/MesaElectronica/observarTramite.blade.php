@@ -6,7 +6,7 @@
   <title>Tramite Observado</title>
 </head>
 <body>
-<h1 style="text-align: center; background-color: #4F81BD">Notificación de Observación de Trámite Documentario</h1>
+<h1 style="text-align: center; background-color: #9E0B26">Notificación de Observación de Trámite Documentario</h1>
 <p>Estimado(a) Sr(a): <strong>{{$doc->docu_firma}}</strong>
   Se comunica a usted que su registro de trámite ha sido observado.</p>
 <ul>
@@ -16,7 +16,7 @@
         aquí
     </a> o puede volver a presentar su trámite una vez subsanado el motivo de la observación.</p>
 <p>{{$dependencia->depe_nombre}}</p>
-    <img src="{{asset('https://www.regionCUSCO.gob.pe/img/logosgrh/Logo-Oficial-2-300x98.png')}}" alt="Gobierno Regional Huánuco" />
+  <img src="{{asset('/img/membrete_header20.jpg')}}" alt="Gobierno Regional Cusco" />
     <p>Por favor no responder a esta dirección de correo, ya que este buzón es de envío automático.</p>
 </body>
 </html>

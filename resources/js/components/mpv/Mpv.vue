@@ -33,7 +33,7 @@
                 </button>
               </div>              
               <div class="col-sm-3">
-                <a href="https://drive.google.com/file/d/1EwK8WOTRoBSOwux-q3Sfj7bsMLTfI1Qc/view?usp=sharing" target="_blank">
+                <a href="/manuales/Manual Mesa de Partes Virtual Administradores-GRC.pdf" target="_blank">
                   <span class="icon icon-file-play fs-50" aria-hidden="true" style="font-size: 15px; margin-top: 10px"></span>Manual de administrador MPV</a>
               </div>
             </div>
@@ -295,7 +295,7 @@
                       </span>
                     </td>
                     <td class="registro">
-                      <strong>Fecha:</strong>{{ documento.created_at }}<br />
+                      <strong>Fecha:</strong>{{ moment(documento.created_at).format('DD-MM-YYYY  H:mm:ss') }}<br />
                       <strong>Folios:</strong>{{ documento.docu_folios }}
                     </td>
                     <td class="documento">

@@ -148,7 +148,7 @@
                           })
                         "
                       >
-                        <span class="badge badge-info">{{ operacion.created_at }}</span>
+                        <span class="badge badge-info">{{ moment(operacion.created_at).format('DD-MM-YYYY  H:mm:ss') }}</span>
                         <span
                           v-if="operacion.oper_idtope !== 3 && operacion.oper_idtope !== 4"
                           :class="{

@@ -113,14 +113,15 @@
           </a>
         </div>
         <div class="col-12 col-md-6 col-lg-4 col-xl-3 text-center align-self-center">
-          <a href="http://proyectos.regionCUSCO.gob.pe/regulations/file/89998/0/1" target="_blank">
+          <!-- <a href="http://proyectos.regioncusco.gob.pe/regulations/file/89998/0/1" target="_blank">
             <h4>Directiva SGD</h4>
             <span class="icon icon-file-play fs-50" aria-hidden="true" style="font-size: 115px; margin-top: 50px"></span>
           </a>
-          <a href="http://www.regionCUSCO.gob.pe/oficial/videosDGP.php" target="_blank" style="color:#be334f    ;">
+          <a href="http://www.regioncusco.gob.pe/oficial/videosDGP.php" target="_blank" style="color:#be334f    ;">
             <h4>Videos Tutoriales</h4>
-          </a>
-          <a href="https://drive.google.com/file/d/1WWkMr7UFP5Du_8pbjXFd55nBx1ekE4hq/view?usp=sharing" target="_blank">
+          </a> -->
+          <a href="/manuales/Manual de Tramite Documentario V1.pdf" target="_blank">
+            <span class="icon icon-file-play fs-50" aria-hidden="true" style="font-size: 115px; margin-top: 50px"></span>
             <h4>Manual de usuario</h4>
           </a>
           <span class="text-muted"></span>

@@ -40,7 +40,7 @@ class CreateTramDocumentoExterno extends Migration
             $table->string('docu_ruc', 11)->nullable();
             $table->string('docu_telef', 15)->nullable();
             $table->decimal('docu_firma_electronica', 1, 0)->nullable();
-            $table->string('clavedoc')->nullable();
+            $table->string('codigo', 20)->nullable();
             $table->string('docu_token', 50)->nullable();
             $table->integer('updated_by')->unsigned()->nullable();
             $table->timestamp('observ_at')->nullable();

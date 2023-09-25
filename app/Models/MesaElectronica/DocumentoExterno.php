@@ -34,6 +34,8 @@ class DocumentoExterno extends Model
         "docu_dni",
         "docu_telef",
         "docu_firma_electronica",
+        "codigo",
+
     ];
     protected $hidden = [
         'updated_at',

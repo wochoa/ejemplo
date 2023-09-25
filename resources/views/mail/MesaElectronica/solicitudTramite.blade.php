@@ -6,7 +6,7 @@
     <title>Solicitud de tramite</title>
 </head>
 <body>
-    <h1 style="text-align: center; background-color: #4F81BD">Notificación de Trámite Documentario</h1>
+    <h1 style="text-align: center; background-color: #9E0B26">Notificación de Trámite Documentario</h1>
     <p>Estimado(a) Sr(a): <strong>{{$doc->docu_firma}}</strong>
         Se le comunica a usted que hemos recibido su trámite.</p>
     <p>Tan pronto como podamos nos pondremos en contacto con usted por este medio.</p>
@@ -22,8 +22,9 @@
         @endif
         <li><strong>Teléfono: </strong>{{$doc->docu_telef}}</li>
         <li><strong>eMail: </strong>{{$doc->docu_emailorigen}}</li>
+        <li><strong>CODIGO: </strong><b>{{$doc->codigo}}</b></li>
     </ul>
-    <img src="{{asset('https://www.regionCUSCO.gob.pe/img/logosgrh/Logo-Oficial-2-300x98.png')}}" alt="Gobierno Regional Huánuco" />
+    <img src="{{asset('/img/membrete_header20.jpg')}}" alt="Gobierno Regional Cusco" />
     <p>Por favor no responder a esta dirección de correo, ya que este buzón es de envío automático.</p>
 </body>
 </html>

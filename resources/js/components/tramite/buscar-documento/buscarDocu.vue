@@ -114,7 +114,7 @@
                 </li>
                 <li>
                   <span class="icon icon-file-play fs-10" aria-hidden="true" style="font-size: 15px; margin-top: 10px">
-                    <a tabindex="-1" href="https://drive.google.com/file/d/1MfzLByygkgx3t7A0MZgCeC0uYVJPqlA6/view?usp=sharing" target="_blank" style="font-size: 15px; margin-top: 15px">Manual de administrador de dependencia</a>
+                    <a tabindex="-1" href="/manuales/Manual de Administración de Dependencias SGD-GRC.pdf" target="_blank" style="font-size: 15px; margin-top: 15px">Manual de administrador de dependencia</a>
                   </span>
                 </li>
               </ul>
@@ -157,7 +157,7 @@
               placeholder="Buscar Documento"
               @input="actualizarCodigoBusqueda($event.target.value)"
             />
-            <button type="button" class="btn btn-sm btn-dark" @click="buscarDocumentoPopup()">
+            <button type="button" class="btn btn-sm btn-info" @click="buscarDocumentoPopup()">
               Buscar Reg.
             </button>
             <button type="button" class="btn btn-sm btn-warning" @click="buscarExpedientePopup()">

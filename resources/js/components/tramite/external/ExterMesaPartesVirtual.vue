@@ -38,7 +38,7 @@
                                     <label for="">Seguimiento de trámites</label>
                                     <p>
                                         <!-- <a href="/login" target="_blank" class="btn btn-sm btn-warning">Buscar Expediente</a> -->
-                                    <a href="/registro/mpv/obs/3" target="_blank" class="btn btn-danger btn-sm">Ver estado de mi trámite</a>
+                                    <a href="/registro/seguimiento" target="_blank" class="btn btn-danger btn-sm">Ver estado de mi trámite</a>
                                     </p>
                                 </div>
                             </div>
@@ -229,8 +229,8 @@
                                     </div>
                                     <div class="card-footer text-right">
                                         <div class="col-sm-5 text-left">
-                                            <a href="https://drive.google.com/file/d/1IDVAjkUBx3ykztO6qu2acKyb2OZwZG6N/view?usp=sharing" target="_blank">
-                                                <span class="icon icon-file-play fs-50" aria-hidden="true" style="font-size: 15px; margin-top: 10px"></span>Manual de usuario</a>
+                                            <a href="/manuales/Manual MPV-GRC.pdf" target="_blank" class="btn btn-sm btn-outline-danger">
+                                                <span class="icon icon-file-play fs-50" aria-hidden="true" style="font-size: 15px; margin-top: 10px"></span>Manual del usuario</a>
                                         </div>
                                         <button class="btn btn-primary btn-sm" type="button" :disabled="!tipoNumeroValidado" @click="siguiente">
                                             <!-- <span class="icon icon-redo2 fs-18">Continuar</span> -->
@@ -256,22 +256,31 @@
                                         <div class="modal-body">
                                             <div class="form-group">
                                                 <p>Estimado(a) Sr(a): <strong>{{ documento.docu_firma }}</strong>
-                                                    Se le comunica a usted que se ha recibido su trámite.</p>
-                                                <p>Tan pronto como podamos nos pondremos en contacto con usted por medio del correo electrónico registrado.</p>
+                                                    , Se le comunica a usted que  ha registrado su trámite,queda a la espera del responsable de Mesa de Partes Virtual.<br></p>
+                                                <p><b>Datos de trámite:</b></p>
                                                 <ul>
                                                     <li><strong>Dependencia Remitida: </strong> {{ nameDependencia }}</li>
                                                     <li><strong>Asunto: </strong>{{ documento.docu_asunto }}</li>
                                                     <li><strong>Entidad: </strong>{{ documento.docu_detalle }}</li>
                                                     <li><strong>Firmante: </strong>{{ documento.docu_firma }}</li>
-                                                    <li><strong>DNI: </strong>{{ documento.docu_dni }}</li>
-                                                    <li><strong>RUC: </strong>{{ documento.docu_ruc }}</li>
+                                                    <li v-if="documento.docu_dni"><strong>DNI: </strong>{{ documento.docu_dni }}</li>
+                                                    <li v-if="documento.docu_ruc"><strong>RUC: </strong>{{ documento.docu_ruc }}</li>
                                                     <li><strong>Teléfono: </strong>{{ documento.docu_telef }}</li>
                                                     <li><strong>eMail: </strong>{{ documento.docu_emailorigen }}</li>
-                                                    <li><strong>Fecha envio: </strong>{{ fechacobranza}}</li>
+                                                    <li><strong>Fecha envio: </strong>{{ moment(documento.created_at).format('DD-MM-YYYY  H:mm:ss') }}</li>
+                                                    
                                                 </ul>
+                                                <div class="border text-center" style="background-color: #86e99d;">
+                                                    <strong>CODIGO: </strong><b>{{ documento.codigo}}</b>, 
+                                                    <b v-if="documento.docu_dni"> DNI:{{ documento.docu_dni }}</b> 
+                                                    <b v-if="documento.docu_ruc"> DNI:{{ documento.docu_ruc }}</b>,
+                                                    <b>eMail: {{ documento.docu_emailorigen }}</b><br> 
+                                                    (Datos necesarios para hecer el seguimiento)
+
+                                                </div>
                                                 <div class="alert alert-warning" role="alert">
                                                     <h4 class="alert-heading">Aviso importante!</h4>
-                                                    <p>para verificar su número de registro de expediente o en su defecto si su documento ha sido observado, deberá ingresar al enlace de color rojo <a href="/registro/mesa-partes-virtual/3" class="btn btn-sm btn-danger">Ver estado de mi trámite</a> </p>
+                                                    <p>para verificar su número de registro de expediente o en su defecto si su documento ha sido observado, deberá ingresar al enlace de color rojo <a href="/registro/seguimiento" target="_blank" class="btn btn-sm btn-danger">Ver estado de mi trámite</a> </p>
 
                                                 </div>
                                             </div>
@@ -384,6 +393,7 @@
 </template>
 
 <script>
+import moment from 'moment'
 import {
     md5
 } from 'pure-md5'
@@ -473,7 +483,9 @@ export default {
                 docu_dni: null,
                 docu_ruc: null,
                 docu_telef: null,
-                docu_emailorigen: null
+                docu_emailorigen: null,
+                created_at: null,
+                codigo: null
             },
             tipo: 1,
             tipoNumero: null,
@@ -681,6 +693,9 @@ export default {
     },
     methods: {
         ...Vuex.mapActions(['obtenerDocumentos', 'ejecutarRecursivamente']),
+        moment(a) {
+            return moment(a)
+        },
         siguiente() {
 
             this.$validator.validate().then(result => {
@@ -908,8 +923,8 @@ export default {
                                     alert('Hubo un problema, revise los datos rellenados o su internet')
                                     this.saving = false
                                 }
-                                // })
-                            })
+                                })
+                            // })
                         }
                     } else {
                         alert('Debe de cargar el documento principal antes de los anexos en formato PDF para continuar')

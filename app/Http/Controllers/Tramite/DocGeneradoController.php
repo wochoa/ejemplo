@@ -96,7 +96,7 @@ class DocGeneradoController extends Controller
         $oficina     = Dependencia::find($documento->docu_iddependencia);
         $dependencia = Dependencia::find($oficina->depe_depende);
         $superior    = $oficina->getSuperiorName();
-        @$ofi1        = ($superior != null) ? $superior : $oficina->depe_superior["nombre"];
+        $ofi1        = ($superior != null) ? $superior : $oficina->depe_superior["nombre"];
         $ofi2        = ($superior != null) ? $oficina->depe_superior["nombre"] : '';
         //dd(dirname(__FILE__));
         //define('FPDF_FONTPATH', '/resources/fontTcpdf');
@@ -181,11 +181,11 @@ class DocGeneradoController extends Controller
             });
             $pdf::setFooterCallback(function ($pdf) use ($documento, $margins, $dependencia) {
                 if ($documento->iddocumento != '') {
-                    if (in_array($documento->docu_idtipodocumento, [1, 2, 5, 19])) {
-                        $pdf->SetY($pdf->getPageHeight() - $margins['bottom']);
-                    } else {
-                        $pdf->SetY($pdf->getPageHeight() - $margins['bottom'] + 10);
-                    }
+                    // if (in_array($documento->docu_idtipodocumento, [1, 2, 5, 19])) {
+                    //     $pdf->SetY($pdf->getPageHeight() - $margins['bottom']);
+                    // } else {
+                        $pdf->SetY($pdf->getPageHeight() - $margins['bottom'] + 3);
+                    // }
                     $pdf->SetTextColor(100, 100, 100);
                     $pdf->SetFont('Helvetica', '', 9);
                     $pdf->Cell(15, 4, 'Doc. Reg.', 0, 0, 'C');
@@ -229,7 +229,7 @@ class DocGeneradoController extends Controller
                 }
                 $pdf->SetTextColor(100, 100, 100);
 
-                if (in_array($documento->docu_idtipodocumento, [1, 2, 5, 19])) {
+                // if (in_array($documento->docu_idtipodocumento, [1, 2, 5, 19])) {
                     if (Storage::disk('imagenes')->exists($dependencia->depe_imagen_footer)) {
                         $pdf->Image(
                             '@' . Storage::disk('imagenes')->get($dependencia->depe_imagen_footer),
@@ -239,13 +239,13 @@ class DocGeneradoController extends Controller
                         );
                     } else {
                         $pdf->Image(
-                            'img/membrete_footer.jpg',
+                            'img/membrete_footer.png',
                             $margins['left'],
                             $pdf->getPageHeight() - $margins['bottom'] + 11,
                             $pdf->getPageWidth() - $margins['right'] - $margins['left']
                         );
                     }
-                }
+                // }
                 $pdf->Ln();
             });
         }

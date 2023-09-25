@@ -320,7 +320,7 @@ Route::get('invoker/getFile', 'Tramite\InvokerController@getFile')->name('invoke
 Route::view('/registro/mesa-partes-virtual/{id}','tramite.tramiteVarios.mesaPartesVirtual')->name('registro.mesaPartesVirtual');
 Route::get('/registro/mesa-partes-virtual/{id}/{token}','Tramite\DocumentoExternoController@observaciones')->name('registro.mesaPartesVirtual.token');
 
-route::get('/registro/mpv/obs/{depe}','Tramite\DocumentoExternoController@documentos_observados')->name('documentos_observados');
+route::get('/registro/seguimiento','Tramite\DocumentoExternoController@documentos_observados')->name('documentos_observados');
 route::post('/registro/mpv/lista','Tramite\DocumentoExternoController@bus_documentos_observados')->name('bus_documentos_observados');
 
 

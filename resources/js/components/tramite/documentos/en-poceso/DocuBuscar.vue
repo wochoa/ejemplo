@@ -359,7 +359,7 @@
                     {{ documento.oper_idtope == 1 ? 'REGISTRADO' : 'DERIVADO' }}
                   </td>
                   <td class="registro">
-                    <strong>Fecha:</strong>{{ documento.created_at }}<br />
+                    <strong>Fecha:</strong>{{ moment(documento.created_at).format('DD-MM-YYYY  H:mm:ss') }}<br />
                     <strong>Forma:</strong>{{ documento.oper_forma == 1 ? 'COPIA' : 'ORIGINAL' }}<br />
                     <strong>Folios:</strong>{{ documento.docu_folios }}<br />
                     <strong>Proveido:</strong>{{ documento.proveido }}

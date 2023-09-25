@@ -16,7 +16,7 @@
   </head>
 
   <body style="background: rgb(194,185,185);
-               background: linear-gradient(29deg, rgba(194,185,185,1) 27%, rgba(255,255,255,1) 100%);" >
+               background: linear-gradient(29deg, rgba(194,185,185,1) 27%, rgba(255,255,255,1) 100%); backgorund-no" >
 
         @if (Auth::guest())
         <div class="Navbar">

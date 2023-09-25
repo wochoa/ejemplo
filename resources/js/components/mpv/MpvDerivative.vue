@@ -85,7 +85,7 @@
                     </span>
                   </td>
                   <td class="registro">
-                    <strong>Fecha:</strong>{{ documento.created_at }}<br />
+                    <strong>Fecha:</strong>{{ moment(documento.created_at).format('DD-MM-YYYY  H:mm:ss') }}<br />
                     <strong>Folios:</strong>{{ documento.docu_folios }}
                   </td>
                   <td class="documento">
