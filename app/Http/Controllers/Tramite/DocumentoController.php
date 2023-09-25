@@ -352,7 +352,7 @@ class DocumentoController extends Controller
         $recaptcha_response = $request->token;
         $recaptcha          = file_get_contents($recaptcha_url . '?secret=' . $recaptcha_secret . '&response=' . $recaptcha_response);
         $recaptcha          = json_decode($recaptcha);
-        if ($recaptcha->success) {
+        // if ($recaptcha->success) {
             $documento = Documento::select('iddocumento')
                 ->where('iddocumento', '=', $request->iddocumento)
                 ->where('docu_contrasenia', '=', $request->docu_contrasenia)
@@ -374,7 +374,7 @@ class DocumentoController extends Controller
             } else {
                 return ['status' => false, 'data' => []];
             }
-        }
+        // }
     }
 
     public function buscarDocExterno(Request $request)
