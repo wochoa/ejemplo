@@ -176,7 +176,7 @@ class DocumentoExternoController extends Controller
                 if (!Operacion::derivar($op, $request->derivaciones))
                     $r = false;
 
-                \MultiMail::to($documento->docu_emailorigen)->from(array_rand (config('multimail.emails')))->queue(new tramiteAceptado($documento));
+                // \MultiMail::to($documento->docu_emailorigen)->from(array_rand (config('multimail.emails')))->queue(new tramiteAceptado($documento));
             }
         return [
             'status' => $r,

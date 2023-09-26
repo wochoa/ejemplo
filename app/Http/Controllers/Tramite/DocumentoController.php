@@ -349,9 +349,9 @@ class DocumentoController extends Controller
     {
         $recaptcha_url      = env('RECAPTCHA_URL');
         $recaptcha_secret   = env('RECAPTCHA_SECRET');
-        $recaptcha_response = $request->token;
-        $recaptcha          = file_get_contents($recaptcha_url . '?secret=' . $recaptcha_secret . '&response=' . $recaptcha_response);
-        $recaptcha          = json_decode($recaptcha);
+        // $recaptcha_response = $request->token;
+        // $recaptcha          = file_get_contents($recaptcha_url . '?secret=' . $recaptcha_secret . '&response=' . $recaptcha_response);
+        // $recaptcha          = json_decode($recaptcha);
         // if ($recaptcha->success) {
             $documento = Documento::select('iddocumento')
                 ->where('iddocumento', '=', $request->iddocumento)
@@ -381,14 +381,14 @@ class DocumentoController extends Controller
     {
         $recaptcha_url      = env('RECAPTCHA_URL');
         $recaptcha_secret   = env('RECAPTCHA_SECRET');
-        $recaptcha_response = $request->token;
-        $recaptcha          = file_get_contents($recaptcha_url . '?secret=' . $recaptcha_secret . '&response=' . $recaptcha_response);
-        $recaptcha          = json_decode($recaptcha);
+        // $recaptcha_response = $request->token;
+        // $recaptcha          = file_get_contents($recaptcha_url . '?secret=' . $recaptcha_secret . '&response=' . $recaptcha_response);
+        // $recaptcha          = json_decode($recaptcha);
 
         $carbon = new Carbon($request->docu_fecha_hasta);
         $carbon->addDay();
 
-        if ($recaptcha->success) {
+        // if ($recaptcha->success) {
 
             switch ($request->busquedaEspecifico) {
                 case 'false':
@@ -497,7 +497,7 @@ class DocumentoController extends Controller
                 ->where($where)
                 ->orderBy('iddocumento', 'asc')
                 ->paginate(15);
-        }
+        // }
     }
 
     public function documentoDerivar(Request $request)

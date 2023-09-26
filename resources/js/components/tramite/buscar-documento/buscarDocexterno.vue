@@ -10,9 +10,9 @@
     <div class="container">
       <div>
         <div class="panel-group">
-          <div class="panel panel-success">
+          <div class="panel" style="margin-top: 20px !important;">
             <form class="form-horizontal" @submit.prevent="recaptcha()">
-              <div class="panel panel-success">
+              <div class="panel panel-primary">
                 <div class="panel-heading">VERIFICACIÓN DE DOCUMENTOS EXTERNOS</div>
                 <div class="panel-body text-center">
                   <div class="form-group">
@@ -320,10 +320,10 @@ export default {
     recaptcha(page = 1) {
       this.$validator.validate().then(result => {
         if (result) {
-          this.$recaptcha('login').then(token => {
-            this.formData.token = token
+          // this.$recaptcha('login').then(token => {
+          //   this.formData.token = token
             this.buscarDocumento(page)
-          })
+          // })
         } else {
           console.log('incompleto')
         }
@@ -336,26 +336,13 @@ export default {
 
     busquedaNormal() {
       this.formData.busquedaEspecifico = false
-      /*this.formData.docu_dni              = null;
-            this.formData.docu_firma            = null;
-            this.formData.docu_detalle          = null;
-            this.formData.docu_numero_doc       = null;
-            this.formData.docu_siglas_doc       = null;
-            this.formData.docu_iddependencia    = null;*/
+
     },
 
     nuevaBusqueda() {
       //this.status                         = false;
       this.formData.busquedaEspecifico = false
-      /*this.formData.docu_dni              = null;
-            this.formData.docu_firma            = null;
-            this.formData.docu_detalle          = null;
-            this.formData.docu_numero_doc       = null;
-            this.formData.docu_siglas_doc       = null;
-            this.formData.docu_iddependencia    = null;
-            this.formData.docu_asunto           = null;
-            this.formData.token                 = null;
-            this.formData.page                  = null;*/
+
     },
 
     recargar(iddocumento) {

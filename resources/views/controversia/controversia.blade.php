@@ -33,7 +33,7 @@
                 </ul>
             </div>
         </nav>
-        <section class="jumbotron"><div class="container"></div></section>
+        {{-- <section class="jumbotron"><div class="container"></div></section> --}}
         
         <!--<ul class="nav nav-tabs">
             <li role="presentation">

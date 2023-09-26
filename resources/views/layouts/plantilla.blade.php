@@ -122,11 +122,11 @@
 	</header>
 <!--FIN  HEADER-->
 	
-	<section class="jumbotron">
+	{{-- <section class="jumbotron">
 		<div class="container">
 			
 		</div>
-	</section>
+	</section> --}}
 
 	<!--CONTENIDO-->
 	@yield('contenido')

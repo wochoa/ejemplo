@@ -7,17 +7,17 @@
         </div>
       </div>
     </nav>
-    <section class="jumbotron">
+    <!-- <section class="jumbotron"> -->
       <div v-if="status" class="container">
         <button class="btn btn-sm btn-danger" @click="nuevaBusqueda()">Nueva busqueda</button>
       </div>
-    </section>
+    <!-- </section> -->
     <div v-if="!status" class="container">
       <div class="col-md-8 col-md-offset-2">
-        <div class="panel-group">
-          <div class="panel panel-success">
+        <div class="panel-group" style="margin-top: 20px !important;">
+          <div class="panel mt-4">
             <form class="form-horizontal" @submit.prevent="recaptcha()">
-              <div class="panel panel-success">
+              <div class="panel panel-primary">
                 <div class="panel-heading">VERIFICACIÓN DE DOCUMENTOS FIRMADOS DIGITALMENTE</div>
                 <div class="panel-body text-center">
                   <div class="form-group">
@@ -33,12 +33,11 @@
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="panel panel-success">
-                <div class="panel-body text-right">
+                <div class="panel-footer text-right">
                   <button class="btn btn-success">Buscar</button>
                 </div>
               </div>
+              
             </form>
           </div>
         </div>
@@ -100,11 +99,11 @@ export default {
 
     recaptcha() {
       if (this.formData.iddocumento > 0) {
-        this.$recaptcha('login').then(token => {
-          this.formData.token = token
+        // this.$recaptcha('login').then(token => {
+        //   this.formData.token = token
           this.buscarDocumento()
           //console.log(token) // Will print the token
-        })
+        // })
       } else {
         alert('Digite bien el registro')
       }
