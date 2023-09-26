@@ -129,7 +129,20 @@
                   <input v-model="user.depe_id" class="form-control" />
                 </div>
                 <div :class="{ 'col-sm-8': true, 'has-error': errors.has('unidad') }">
-                  <select
+
+                  <el-select  ref="unidad"
+                    v-model="user.depe_id"
+                    v-validate="'required'"
+                    name="unidad" filterable placeholder="Unidades o Dependencias" style="width: 100%;"
+                                    size="small">
+                                        <el-option v-for="(uni, indexUni) in getUnidadesDependenciaForCorrelativo(tipoUsuarios)"
+                                        :key="indexUni" 
+                                        :label="recortetexto(uni.depe_nombre)" 
+                                        :value="uni.iddependencia">
+                                        </el-option>
+                                    </el-select>
+
+                  <!-- <select
                     ref="unidad"
                     v-model="user.depe_id"
                     v-validate="'required'"
@@ -142,7 +155,7 @@
                       :key="indexUni"
                       :value="uni.iddependencia"
                     >{{ uni.depe_nombre }}</option>
-                  </select>
+                  </select> -->
                   <span v-show="errors.has('unidad')" class="help-block">{{ errors.first('unidad') }}</span>
                 </div>
               </div>
@@ -479,7 +492,20 @@ export default {
       }
       //this.rolesForUser.push(tag)
       this.value.push(tag)
-    }
+    },
+    recortetexto(texto) {
+            const valor=texto.length;
+            if(valor<=80)
+            {
+              var puntos='';
+            }
+            else 
+            {
+              var puntos='...';
+            }
+            let text = texto.substring(0, 80) + puntos;
+            return text;
+        }
   }
 }
 </script>
